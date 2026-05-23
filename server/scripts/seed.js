@@ -1,13 +1,18 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const dns = require('dns');
+
+// Force Node to use Google DNS to bypass ISP SRV block
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
+dotenv.config();
+
 const User = require('../models/user');
 const Lead = require('../models/lead');
 const Task = require('../models/task');
 const Activity = require('../models/activity');
 const Notification = require('../models/notification');
 const Comment = require('../models/comment');
-
-dotenv.config();
 
 const usersData = [
   {

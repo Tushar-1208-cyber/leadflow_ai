@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User as UserIcon, Briefcase, Shield } from 'lucide-react';
+import { Mail, Lock, User as UserIcon, Briefcase, Shield, Sun, Moon } from 'lucide-react';
 
 const Login = () => {
   const { login, register } = useAuth();
+  const { darkMode, toggleTheme } = useTheme();
   const [isLoginTab, setIsLoginTab] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,6 +53,18 @@ const Login = () => {
 
   return (
     <div className="min-y-screen flex h-screen w-screen items-center justify-center bg-slate-50 dark:bg-[#0b0f19] px-4 overflow-y-auto transition-colors duration-300 relative">
+      {/* Floating Theme Switcher */}
+      <div className="absolute top-4 right-4 z-20">
+        <button
+          onClick={toggleTheme}
+          type="button"
+          className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/40 backdrop-blur-sm hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-600 dark:text-slate-300 transition-all duration-200 cursor-pointer shadow-sm flex items-center justify-center"
+          title="Toggle Light/Dark Theme"
+        >
+          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+      </div>
+
       {/* Background Decorative Neon Gradients */}
       <div className="absolute top-1/4 left-1/4 h-72 w-72 rounded-full bg-brand-500/10 blur-[100px] shrink-0" />
       <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-brand-600/10 blur-[100px] shrink-0" />
