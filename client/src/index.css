@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans transition-colors duration-300 ease-in-out antialiased;
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  body.dark {
+    background-color: #0b0f19;
+    color: #f8fafc;
+  }
+}
+
+/* Custom Premium Glassmorphism & Shadow Utilities */
+.glass-card {
+  @apply backdrop-blur-md transition-all duration-300;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+}
+
+.dark .glass-card {
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glass-card-hover {
+  @apply hover:shadow-lg hover:-translate-y-0.5 hover:border-brand-300 dark:hover:border-brand-800 transition-all duration-300;
+}
+
+/* Glow effects */
+.glow-dot {
+  box-shadow: 0 0 10px rgba(71, 130, 192, 0.6);
+}
+
+.dark .glow-dot {
+  box-shadow: 0 0 14px rgba(71, 130, 192, 0.8);
+}
+
+/* Custom Modern Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-slate-300 dark:bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-700;
+}
+
+/* Kanban Column Scrollbars */
+.kanban-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.kanban-scroll::-webkit-scrollbar-thumb {
+  @apply rounded bg-slate-200 dark:bg-slate-900;
+}
+
+/* Interactive elements */
+.btn-glass {
+  @apply flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-xl backdrop-blur-sm border transition-all duration-200 active:scale-95 cursor-pointer;
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(226, 232, 240, 1);
+  color: rgba(71, 85, 105, 1);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(71, 130, 192, 0.5);
+  color: rgba(30, 41, 59, 1);
+}
+
+.dark .btn-glass {
+  background: rgba(30, 41, 59, 0.4);
+  border-color: rgba(255, 255, 255, 0.05);
+  color: rgba(148, 163, 184, 1);
+}
+
+.dark .btn-glass:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(71, 130, 192, 0.4);
+  color: rgba(248, 250, 252, 1);
+}
