@@ -22,10 +22,14 @@ app.use(express.json());
 // Cookie parser
 app.use(cookieParser());
 
-// Enable CORS with support for credentials (secure cookies)
+// Enable CORS with support for credentials (secure cookies) and dynamic origins
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: function (origin, callback) {
+      // Allow any incoming origin dynamically (Vercel, Local, etc.)
+      if (!origin) return callback(null, true);
+      return callback(null, origin);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
